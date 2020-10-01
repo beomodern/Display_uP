@@ -1,0 +1,7 @@
+C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\BeoM_display.cyprj|fa43a52d-5a52-4f78-b98a-491ce48c4f15
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4d1842ea-a377-4ca3-868d-85dcdeda659d
+C:\Users\Ala\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|0494a2a9-c01d-4c29-8376-1106f76b7434
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|9618a473-00dd-43b3-aa87-bbe0b10446e7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|4f45b34e-5120-4e78-b02f-6b1130029195
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|8e40f83d-1ad2-4619-aeef-a4b25b279e69
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|ca6d00c7-222f-4013-b26a-1aba265d16ee

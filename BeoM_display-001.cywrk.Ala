@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="BeoM_display-001\BeoM_display\Header Files\operate.h">
+<ExpandedNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\TopDesign</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Pins</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Analog</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Clocks</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Interrupts</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\System</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Directives</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Flash Security</v>
+<v>BeoM_display-001\BeoM_display\Header Files</v>
+<v>BeoM_display-001\BeoM_display\Header Files\display.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\inputs.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\modes.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\operate.h</v>
+<v>BeoM_display-001\BeoM_display\Source Files</v>
+<v>BeoM_display-001\BeoM_display\Source Files\display.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\inputs.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\main.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\modes.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\operate.c</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button</v>
+<v>BeoM_display-001\CE224463.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\TopDesign</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Pins</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Analog</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Clocks</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Interrupts</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\System</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Directives</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.cydwr\Flash Security</v>
+<v>BeoM_display-001\BeoM_display\Header Files</v>
+<v>BeoM_display-001\BeoM_display\Header Files\display.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\inputs.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\modes.h</v>
+<v>BeoM_display-001\BeoM_display\Header Files\operate.h</v>
+<v>BeoM_display-001\BeoM_display\Source Files</v>
+<v>BeoM_display-001\BeoM_display\Source Files\display.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\inputs.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\main.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\modes.c</v>
+<v>BeoM_display-001\BeoM_display\Source Files\operate.c</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Bootloadable_1</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\cy_boot</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\cy_lfclk</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\DISPLAY_Timer</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\DISPLAY_Timer_INT</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Em_EEPROM_Dynamic</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\MISO</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\MOSI</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\PSoC_LED</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button\Push_button.c</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button\Push_button.h</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button\Push_button_aliases.h</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\Push_button\Push_button_PM.c</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SCLK</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SPIS</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SPIS_SCB_IRQ</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SPIS_SCBCLK</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SS</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\SwClock</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\UART</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\UART_rx</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\UART_SCBCLK</v>
+<v>BeoM_display-001\BeoM_display\Generated_Source\PSoC4\UART_tx</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\TopDesign</v>
+<v>BeoM_display-001\BeoM_display\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\TopDesign</v>
+<v>BeoM_display-001\BeoM_display\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\CortexM0</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cybootloader.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\display.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer_INT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\inputs.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MISO.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MISO_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\modes.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MOSI.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MOSI_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\operate.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\PSoC_LED.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\PSoC_LED_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Push_button.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Push_button_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SCLK.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SCLK_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SCB_IRQ.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SCBCLK.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_UART.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_UART_INT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SS.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SS_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SwClock.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_rx.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_rx_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SCBCLK.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_SPI_UART_INT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_tx_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\UART_UART_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\BeoM_display.cyacd</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\BeoM_display.elf</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\BeoM_display.hex</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\BeoM_display.map</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.gpdsc</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display.rpt</v>
+<v>BeoM_display-001\BeoM_display\BeoM_display_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\CortexM0</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Bootloadable_1.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Cm0Start.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cybootloader.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLFClk.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\display.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer_INT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\DISPLAY_Timer_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\inputs.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\main.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MISO.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MISO_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\modes.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MOSI.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\MOSI_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\operate.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\PSoC_LED.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\PSoC_LED_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Push_button.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\Push_button_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SCLK.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SCLK_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SCB_IRQ.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SCBCLK.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_BOOT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_UART.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SPIS_SPI_UART_INT.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SS.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SS_PM.lst</v>
+<v>BeoM_display-001\BeoM_display\CortexM0\ARM_GCC_541\Debug\Listing Files\SwClock.lst</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\PSoC 4 Architecture TRM</v>
+<v>BeoM_display-001\BeoM_display\PSoC 4200 Family Datasheet</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides\cy_boot_v5_90</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides\cy_lfclk_v1_20</v>
+<v>BeoM_display-001\BeoM_display\Bootloadable_v1_60.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_clock_v2_20.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_isr_v1_70.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_pins_v2_20</v>
+<v>BeoM_display-001\BeoM_display\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>BeoM_display-001\BeoM_display\cydff_v1_30.pdf</v>
+<v>BeoM_display-001\BeoM_display\SCB_P4_v4_0</v>
+<v>BeoM_display-001\BeoM_display\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
+<v>BeoM_display-001\BeoM_display\Timer_v2_80.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>BeoM_display-001</v>
+<v>BeoM_display-001\BeoM_display</v>
+<v>BeoM_display-001\BeoM_display\PSoC 4 Architecture TRM</v>
+<v>BeoM_display-001\BeoM_display\PSoC 4200 Family Datasheet</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides\cy_boot_v5_90</v>
+<v>BeoM_display-001\BeoM_display\System Reference Guides\cy_lfclk_v1_20</v>
+<v>BeoM_display-001\BeoM_display\Bootloadable_v1_60.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_clock_v2_20.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_isr_v1_70.pdf</v>
+<v>BeoM_display-001\BeoM_display\cy_pins_v2_20</v>
+<v>BeoM_display-001\BeoM_display\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>BeoM_display-001\BeoM_display\cydff_v1_30.pdf</v>
+<v>BeoM_display-001\BeoM_display\SCB_P4_v4_0</v>
+<v>BeoM_display-001\BeoM_display\SCB_P4_v4_0\SCB_P4_v4_0.pdf</v>
+<v>BeoM_display-001\BeoM_display\Timer_v2_80.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\BeoM_display.cydwr" />
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\main.c" />
+<name v=".\display.c" />
+<name v=".\inputs.c" />
+<name v=".\modes.c" />
+<name v=".\operate.c" />
+<name v=".\inputs.h" />
+<name v=".\modes.h" />
+<name v=".\operate.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1292, 589" SelectedTabbedMdiWindow="ab9f3d46-a0bc-4d96-8ca1-2501e1e759fb"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="b28a3ad9-803d-47bc-864c-c0d29b18093f" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\BeoM_display.cydwr" Guid="1902662d-b96a-4277-ac71-3c0996e31655" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\TopDesign\TopDesign.cysch" Guid="5ee7a540-d1d4-42d6-8790-e244120b14ba" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\main.c" Guid="e76e3216-6b8f-4245-b80c-ab0507c13473" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\display.c" Guid="6e85f6cf-bf0d-45dd-9ae6-a22a527c58ee" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\inputs.c" Guid="73ae3b93-efdc-4a5e-b21c-d45833819f1a" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\modes.c" Guid="2fea9073-3e22-431e-8c82-0a4bd9e777c3" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\operate.c" Guid="ab9f3d46-a0bc-4d96-8ca1-2501e1e759fb" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\inputs.h" Guid="164bbc97-ca52-4a17-bb53-cfa4df6c49f3" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\modes.h" Guid="f2536931-571f-42ca-b509-a8d12686b8de" /><DocumentWindow Key="C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\operate.h" Guid="f625c59f-5a9b-42e2-a15d-ffd1d1b6f49f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

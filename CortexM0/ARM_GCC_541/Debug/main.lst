@@ -1,0 +1,833 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	flag,1,1
+  20              		.comm	RxBuffer,28,4
+  21              		.comm	TxBuffer,3,4
+  22              		.comm	dummyRxBuffer,28,4
+  23              		.comm	dummyTxBuffer,3,4
+  24              		.comm	ch,4,4
+  25              		.global	display_status
+  26              		.bss
+  27              		.type	display_status, %object
+  28              		.size	display_status, 1
+  29              	display_status:
+  30 0000 00       		.space	1
+  31              		.section	.text.main,"ax",%progbits
+  32              		.align	2
+  33              		.global	main
+  34              		.code	16
+  35              		.thumb_func
+  36              		.type	main, %function
+  37              	main:
+  38              	.LFB32:
+  39              		.file 1 "main.c"
+   1:main.c        **** /*******************************************************************************
+   2:main.c        **** * File Name: main.c
+   3:main.c        **** *
+   4:main.c        **** * Version: 1.0
+   5:main.c        **** * Date: 2020
+   6:main.c        **** *
+   7:main.c        **** * Description:
+   8:main.c        **** *  This project is intended to be used as main code that runs on PSoC KIT
+   9:main.c        **** *  inside BeoModern system. 
+  10:main.c        **** *  It is responsible for monitoring
+  11:main.c        **** *  - two push buttons (short and long press)
+  12:main.c        **** *  - listenning and responding to commands sent over BeO Datalink
+  13:main.c        **** *  It is responsible for controling 
+  14:main.c        **** *  - Raspberry Pi that acts as iRadio, mp3/flac player, DAB radio, FM radio
+  15:main.c        **** *    station name display
+  16:main.c        **** *  - SigmaDSP processor togethre with audio DAC responsible for processing 
+  17:main.c        **** *    audio and producing analog sound
+  18:main.c        **** *  - Bluetooth module
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 2
+
+
+  19:main.c        **** *  - power supply system (power up and down different blocks)
+  20:main.c        **** *  - information sent to the display module
+  21:main.c        **** *
+  22:main.c        **** *******************************************************************************/
+  23:main.c        **** 
+  24:main.c        **** #include <project.h>
+  25:main.c        **** #include <inputs.h>
+  26:main.c        **** #include <modes.h>
+  27:main.c        **** #include <operate.h>
+  28:main.c        **** #include <display.h>
+  29:main.c        **** 
+  30:main.c        ****  // TO BE REMOVED TO BE REMOVED
+  31:main.c        ****     uint32 ch;          /* variable used by routine used to quickly move to load mode */
+  32:main.c        ****     uint8 display_status = 0;
+  33:main.c        ****  // TO BE REMOVED TO BE REMOVED
+  34:main.c        **** 
+  35:main.c        **** 
+  36:main.c        **** void main()
+  37:main.c        **** {   
+  40              		.loc 1 37 0
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44 0000 80B5     		push	{r7, lr}
+  45              		.cfi_def_cfa_offset 8
+  46              		.cfi_offset 7, -8
+  47              		.cfi_offset 14, -4
+  48 0002 00AF     		add	r7, sp, #0
+  49              		.cfi_def_cfa_register 7
+  38:main.c        **** 
+  39:main.c        **** 
+  40:main.c        **** //Manually set P4.2 as input. Used to Read Raspberry Pi status
+  41:main.c        **** //    CY_SYS_PINS_SET_DRIVE_MODE(CYREG_PRT4_PC,2,CY_SYS_PINS_DM_DIG_HIZ);
+  42:main.c        **** //Manually set P4.3 as input. Used to Read BT AAC status
+  43:main.c        **** //    CY_SYS_PINS_SET_DRIVE_MODE(CYREG_PRT4_PC,3,CY_SYS_PINS_DM_DIG_HIZ);
+  44:main.c        **** 
+  45:main.c        **** 
+  46:main.c        **** // Starts DISPLAY timer
+  47:main.c        ****     DISPLAY_Timer_Start();
+  50              		.loc 1 47 0
+  51 0004 FFF7FEFF 		bl	DISPLAY_Timer_Start
+  48:main.c        ****     
+  49:main.c        **** // Enable DISPLAY timer interrupt and set up handler for it
+  50:main.c        ****     DISPLAY_Timer_INT_StartEx(DISPLAY_Timer_INTHandler);    
+  52              		.loc 1 50 0
+  53 0008 2A4B     		ldr	r3, .L7
+  54 000a 1800     		movs	r0, r3
+  55 000c FFF7FEFF 		bl	DISPLAY_Timer_INT_StartEx
+  51:main.c        **** 
+  52:main.c        **** // Connects user made function to interrupt
+  53:main.c        ****     SPIS_SetCustomInterruptHandler(*Slave_ISR);
+  56              		.loc 1 53 0
+  57 0010 294B     		ldr	r3, .L7+4
+  58 0012 1800     		movs	r0, r3
+  59 0014 FFF7FEFF 		bl	SPIS_SetCustomInterruptHandler
+  54:main.c        ****     
+  55:main.c        **** // Enable interrupt routines
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 3
+
+
+  56:main.c        ****     CyGlobalIntEnable;
+  60              		.loc 1 56 0
+  61              		.syntax divided
+  62              	@ 56 "main.c" 1
+  63 0018 62B6     		CPSIE   i
+  64              	@ 0 "" 2
+  57:main.c        ****     
+  58:main.c        **** // Start SCB (UART mode) operation 
+  59:main.c        ****     UART_Start();
+  65              		.loc 1 59 0
+  66              		.thumb
+  67              		.syntax unified
+  68 001a FFF7FEFF 		bl	UART_Start
+  60:main.c        **** 
+  61:main.c        **** // Start SCB (SPI mode) operation 
+  62:main.c        ****     SPIS_Start();
+  69              		.loc 1 62 0
+  70 001e FFF7FEFF 		bl	SPIS_Start
+  63:main.c        ****       
+  64:main.c        ****  /*
+  65:main.c        ****     // Writing data into the SPIS TX software buffer 
+  66:main.c        ****     SPIS_SpiUartWriteTxData(0x11u);
+  67:main.c        ****     SPIS_SpiUartWriteTxData(0x22u);
+  68:main.c        **** 
+  69:main.c        ****     // Writing data into the SPIM software buffer 
+  70:main.c        ****     SPIS_SpiUartWriteTxData(0x99u);
+  71:main.c        ****     SPIS_SpiUartWriteTxData(0xAAu);
+  72:main.c        ****     
+  73:main.c        ****     while(0u == (SPIS_GetMasterInterruptSource() & SPIS_INTR_MASTER_SPI_DONE))
+  74:main.c        ****     {
+  75:main.c        ****         // Wait while Master completes transfer 
+  76:main.c        ****     }
+  77:main.c        ****     
+  78:main.c        ****     // Clear interrupt source after transfer completion 
+  79:main.c        ****     SPIS_ClearMasterInterruptSource(SPIS_INTR_MASTER_SPI_DONE);
+  80:main.c        ****   
+  81:main.c        **** */  
+  82:main.c        ****    
+  83:main.c        ****     
+  84:main.c        **** // Put dummy data into the slave TX buffer to be transferred while following
+  85:main.c        **** // first master access.
+  86:main.c        ****     SPIS_UpdateStatus(0x00);
+  71              		.loc 1 86 0
+  72 0022 0020     		movs	r0, #0
+  73 0024 FFF7FEFF 		bl	SPIS_UpdateStatus
+  74              	.L6:
+  87:main.c        ****         
+  88:main.c        ****     for(;;)
+  89:main.c        ****     {
+  90:main.c        **** // press push button to reset SPI interface        
+  91:main.c        ****         if (Push_button_Read() == 0)
+  75              		.loc 1 91 0
+  76 0028 FFF7FEFF 		bl	Push_button_Read
+  77 002c 031E     		subs	r3, r0, #0
+  78 002e 11D1     		bne	.L2
+  92:main.c        ****         {
+  93:main.c        **** // Clear TX buffer from dummy bytes            
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 4
+
+
+  94:main.c        ****             SPIS_SpiUartClearTxBuffer();
+  79              		.loc 1 94 0
+  80 0030 FFF7FEFF 		bl	SPIS_SpiUartClearTxBuffer
+  95:main.c        **** // Clear RX buffer from dummy bytes
+  96:main.c        ****             SPIS_SpiUartClearRxBuffer();
+  81              		.loc 1 96 0
+  82 0034 FFF7FEFF 		bl	SPIS_SpiUartClearRxBuffer
+  97:main.c        **** // clear flag set by interrupt               
+  98:main.c        ****             flag = 0;            
+  83              		.loc 1 98 0
+  84 0038 204B     		ldr	r3, .L7+8
+  85 003a 0022     		movs	r2, #0
+  86 003c 1A70     		strb	r2, [r3]
+  99:main.c        **** // Clears the interrupt source
+ 100:main.c        ****             SPIS_ClearRxInterruptSource(SPIS_INTR_RX_NOT_EMPTY);
+  87              		.loc 1 100 0
+  88 003e 204B     		ldr	r3, .L7+12
+  89 0040 0422     		movs	r2, #4
+  90 0042 1A60     		str	r2, [r3]
+ 101:main.c        **** // switch on/off LED when software works
+ 102:main.c        ****             PSoC_LED_Write(~PSoC_LED_Read());
+  91              		.loc 1 102 0
+  92 0044 FFF7FEFF 		bl	PSoC_LED_Read
+  93 0048 0300     		movs	r3, r0
+  94 004a DB43     		mvns	r3, r3
+  95 004c DBB2     		uxtb	r3, r3
+  96 004e 1800     		movs	r0, r3
+  97 0050 FFF7FEFF 		bl	PSoC_LED_Write
+  98              	.L2:
+ 103:main.c        ****         }
+ 104:main.c        ****         
+ 105:main.c        **** // Check if SPI interface set interrupt (new data is available)
+ 106:main.c        ****         if (flag == 1)
+  99              		.loc 1 106 0
+ 100 0054 194B     		ldr	r3, .L7+8
+ 101 0056 1B78     		ldrb	r3, [r3]
+ 102 0058 012B     		cmp	r3, #1
+ 103 005a 1ED1     		bne	.L3
+ 107:main.c        ****         {
+ 108:main.c        **** // set display status to 0
+ 109:main.c        ****             display_status = 0;
+ 104              		.loc 1 109 0
+ 105 005c 194B     		ldr	r3, .L7+16
+ 106 005e 0022     		movs	r2, #0
+ 107 0060 1A70     		strb	r2, [r3]
+ 110:main.c        **** // Check if new data is available
+ 111:main.c        ****             if (SPIS_WaitForCommand(RxBuffer) == 1)
+ 108              		.loc 1 111 0
+ 109 0062 194B     		ldr	r3, .L7+20
+ 110 0064 1800     		movs	r0, r3
+ 111 0066 FFF7FEFF 		bl	SPIS_WaitForCommand
+ 112 006a 0300     		movs	r3, r0
+ 113 006c 012B     		cmp	r3, #1
+ 114 006e 07D1     		bne	.L4
+ 112:main.c        ****             {
+ 113:main.c        ****                 display_status = SPI_message_reader(RxBuffer);
+ 115              		.loc 1 113 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 5
+
+
+ 116 0070 154B     		ldr	r3, .L7+20
+ 117 0072 1800     		movs	r0, r3
+ 118 0074 FFF7FEFF 		bl	SPI_message_reader
+ 119 0078 0300     		movs	r3, r0
+ 120 007a 1A00     		movs	r2, r3
+ 121 007c 114B     		ldr	r3, .L7+16
+ 122 007e 1A70     		strb	r2, [r3]
+ 123              	.L4:
+ 114:main.c        ****             }
+ 115:main.c        **** // Put data into the slave TX buffer to be transferred while following
+ 116:main.c        **** // master access.           
+ 117:main.c        ****             SPIS_UpdateStatus(display_status);    
+ 124              		.loc 1 117 0
+ 125 0080 104B     		ldr	r3, .L7+16
+ 126 0082 1B78     		ldrb	r3, [r3]
+ 127 0084 1800     		movs	r0, r3
+ 128 0086 FFF7FEFF 		bl	SPIS_UpdateStatus
+ 118:main.c        **** // Clear slave buffer after response has been read        
+ 119:main.c        ****             SPIS_CleanupAfterRead();
+ 129              		.loc 1 119 0
+ 130 008a FFF7FEFF 		bl	SPIS_CleanupAfterRead
+ 120:main.c        **** // clear flag set by interrupt            
+ 121:main.c        ****             flag = 0;
+ 131              		.loc 1 121 0
+ 132 008e 0B4B     		ldr	r3, .L7+8
+ 133 0090 0022     		movs	r2, #0
+ 134 0092 1A70     		strb	r2, [r3]
+ 122:main.c        **** // Clears the interrupt source
+ 123:main.c        ****             SPIS_ClearRxInterruptSource(SPIS_INTR_RX_NOT_EMPTY);
+ 135              		.loc 1 123 0
+ 136 0094 0A4B     		ldr	r3, .L7+12
+ 137 0096 0422     		movs	r2, #4
+ 138 0098 1A60     		str	r2, [r3]
+ 139              	.L3:
+ 124:main.c        ****         }
+ 125:main.c        ****         
+ 126:main.c        **** // TO BE REMOVED TO BE REMOVED        
+ 127:main.c        ****         ch = UART_UartGetChar();
+ 140              		.loc 1 127 0
+ 141 009a FFF7FEFF 		bl	UART_UartGetChar
+ 142 009e 0200     		movs	r2, r0
+ 143 00a0 0A4B     		ldr	r3, .L7+24
+ 144 00a2 1A60     		str	r2, [r3]
+ 128:main.c        **** //  Enters bootload state when "/" is pressed
+ 129:main.c        ****         if ('/' == ch)        
+ 145              		.loc 1 129 0
+ 146 00a4 094B     		ldr	r3, .L7+24
+ 147 00a6 1B68     		ldr	r3, [r3]
+ 148 00a8 2F2B     		cmp	r3, #47
+ 149 00aa BDD1     		bne	.L6
+ 130:main.c        ****             {
+ 131:main.c        ****             Bootloadable_1_Load();
+ 150              		.loc 1 131 0
+ 151 00ac FFF7FEFF 		bl	Bootloadable_1_Load
+ 132:main.c        ****             }   
+ 133:main.c        **** // TO BE REMOVED TO BE REMOVED
+ 134:main.c        ****     }
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 6
+
+
+ 152              		.loc 1 134 0
+ 153 00b0 BAE7     		b	.L6
+ 154              	.L8:
+ 155 00b2 C046     		.align	2
+ 156              	.L7:
+ 157 00b4 00000000 		.word	DISPLAY_Timer_INTHandler
+ 158 00b8 00000000 		.word	Slave_ISR
+ 159 00bc 00000000 		.word	flag
+ 160 00c0 C00F0740 		.word	1074204608
+ 161 00c4 00000000 		.word	display_status
+ 162 00c8 00000000 		.word	RxBuffer
+ 163 00cc 00000000 		.word	ch
+ 164              		.cfi_endproc
+ 165              	.LFE32:
+ 166              		.size	main, .-main
+ 167              		.text
+ 168              	.Letext0:
+ 169              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 170              		.file 3 "./inputs.h"
+ 171              		.file 4 "./operate.h"
+ 172              		.section	.debug_info,"",%progbits
+ 173              	.Ldebug_info0:
+ 174 0000 8A010000 		.4byte	0x18a
+ 175 0004 0400     		.2byte	0x4
+ 176 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 177 000a 04       		.byte	0x4
+ 178 000b 01       		.uleb128 0x1
+ 179 000c 25010000 		.4byte	.LASF23
+ 180 0010 0C       		.byte	0xc
+ 181 0011 22000000 		.4byte	.LASF24
+ 182 0015 2E000000 		.4byte	.LASF25
+ 183 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 184 001d 00000000 		.4byte	0
+ 185 0021 00000000 		.4byte	.Ldebug_line0
+ 186 0025 02       		.uleb128 0x2
+ 187 0026 01       		.byte	0x1
+ 188 0027 06       		.byte	0x6
+ 189 0028 F5000000 		.4byte	.LASF0
+ 190 002c 02       		.uleb128 0x2
+ 191 002d 01       		.byte	0x1
+ 192 002e 08       		.byte	0x8
+ 193 002f A1000000 		.4byte	.LASF1
+ 194 0033 02       		.uleb128 0x2
+ 195 0034 02       		.byte	0x2
+ 196 0035 05       		.byte	0x5
+ 197 0036 1B010000 		.4byte	.LASF2
+ 198 003a 02       		.uleb128 0x2
+ 199 003b 02       		.byte	0x2
+ 200 003c 07       		.byte	0x7
+ 201 003d E2000000 		.4byte	.LASF3
+ 202 0041 02       		.uleb128 0x2
+ 203 0042 04       		.byte	0x4
+ 204 0043 05       		.byte	0x5
+ 205 0044 B4000000 		.4byte	.LASF4
+ 206 0048 02       		.uleb128 0x2
+ 207 0049 04       		.byte	0x4
+ 208 004a 07       		.byte	0x7
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 7
+
+
+ 209 004b 64000000 		.4byte	.LASF5
+ 210 004f 02       		.uleb128 0x2
+ 211 0050 08       		.byte	0x8
+ 212 0051 05       		.byte	0x5
+ 213 0052 00000000 		.4byte	.LASF6
+ 214 0056 02       		.uleb128 0x2
+ 215 0057 08       		.byte	0x8
+ 216 0058 07       		.byte	0x7
+ 217 0059 76000000 		.4byte	.LASF7
+ 218 005d 03       		.uleb128 0x3
+ 219 005e 04       		.byte	0x4
+ 220 005f 05       		.byte	0x5
+ 221 0060 696E7400 		.ascii	"int\000"
+ 222 0064 02       		.uleb128 0x2
+ 223 0065 04       		.byte	0x4
+ 224 0066 07       		.byte	0x7
+ 225 0067 15000000 		.4byte	.LASF8
+ 226 006b 04       		.uleb128 0x4
+ 227 006c 5E000000 		.4byte	.LASF9
+ 228 0070 02       		.byte	0x2
+ 229 0071 F701     		.2byte	0x1f7
+ 230 0073 2C000000 		.4byte	0x2c
+ 231 0077 04       		.uleb128 0x4
+ 232 0078 0E000000 		.4byte	.LASF10
+ 233 007c 02       		.byte	0x2
+ 234 007d F901     		.2byte	0x1f9
+ 235 007f 48000000 		.4byte	0x48
+ 236 0083 02       		.uleb128 0x2
+ 237 0084 04       		.byte	0x4
+ 238 0085 04       		.byte	0x4
+ 239 0086 9B000000 		.4byte	.LASF11
+ 240 008a 02       		.uleb128 0x2
+ 241 008b 08       		.byte	0x8
+ 242 008c 04       		.byte	0x4
+ 243 008d C6000000 		.4byte	.LASF12
+ 244 0091 02       		.uleb128 0x2
+ 245 0092 01       		.byte	0x1
+ 246 0093 08       		.byte	0x8
+ 247 0094 AF000000 		.4byte	.LASF13
+ 248 0098 04       		.uleb128 0x4
+ 249 0099 DC000000 		.4byte	.LASF14
+ 250 009d 02       		.byte	0x2
+ 251 009e A302     		.2byte	0x2a3
+ 252 00a0 A4000000 		.4byte	0xa4
+ 253 00a4 05       		.uleb128 0x5
+ 254 00a5 77000000 		.4byte	0x77
+ 255 00a9 02       		.uleb128 0x2
+ 256 00aa 08       		.byte	0x8
+ 257 00ab 04       		.byte	0x4
+ 258 00ac 0F010000 		.4byte	.LASF15
+ 259 00b0 02       		.uleb128 0x2
+ 260 00b1 04       		.byte	0x4
+ 261 00b2 07       		.byte	0x7
+ 262 00b3 C1010000 		.4byte	.LASF16
+ 263 00b7 06       		.uleb128 0x6
+ 264 00b8 29000000 		.4byte	.LASF26
+ 265 00bc 01       		.byte	0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 8
+
+
+ 266 00bd 24       		.byte	0x24
+ 267 00be 00000000 		.4byte	.LFB32
+ 268 00c2 D0000000 		.4byte	.LFE32-.LFB32
+ 269 00c6 01       		.uleb128 0x1
+ 270 00c7 9C       		.byte	0x9c
+ 271 00c8 07       		.uleb128 0x7
+ 272 00c9 BC010000 		.4byte	.LASF17
+ 273 00cd 03       		.byte	0x3
+ 274 00ce 16       		.byte	0x16
+ 275 00cf 6B000000 		.4byte	0x6b
+ 276 00d3 05       		.uleb128 0x5
+ 277 00d4 03       		.byte	0x3
+ 278 00d5 00000000 		.4byte	flag
+ 279 00d9 08       		.uleb128 0x8
+ 280 00da 6B000000 		.4byte	0x6b
+ 281 00de E9000000 		.4byte	0xe9
+ 282 00e2 09       		.uleb128 0x9
+ 283 00e3 B0000000 		.4byte	0xb0
+ 284 00e7 1B       		.byte	0x1b
+ 285 00e8 00       		.byte	0
+ 286 00e9 07       		.uleb128 0x7
+ 287 00ea BD000000 		.4byte	.LASF18
+ 288 00ee 04       		.byte	0x4
+ 289 00ef 2D       		.byte	0x2d
+ 290 00f0 D9000000 		.4byte	0xd9
+ 291 00f4 05       		.uleb128 0x5
+ 292 00f5 03       		.byte	0x3
+ 293 00f6 00000000 		.4byte	RxBuffer
+ 294 00fa 08       		.uleb128 0x8
+ 295 00fb 6B000000 		.4byte	0x6b
+ 296 00ff 0A010000 		.4byte	0x10a
+ 297 0103 09       		.uleb128 0x9
+ 298 0104 B0000000 		.4byte	0xb0
+ 299 0108 02       		.byte	0x2
+ 300 0109 00       		.byte	0
+ 301 010a 07       		.uleb128 0x7
+ 302 010b B3010000 		.4byte	.LASF19
+ 303 010f 04       		.byte	0x4
+ 304 0110 2E       		.byte	0x2e
+ 305 0111 FA000000 		.4byte	0xfa
+ 306 0115 05       		.uleb128 0x5
+ 307 0116 03       		.byte	0x3
+ 308 0117 00000000 		.4byte	TxBuffer
+ 309 011b 08       		.uleb128 0x8
+ 310 011c 2B010000 		.4byte	0x12b
+ 311 0120 2B010000 		.4byte	0x12b
+ 312 0124 09       		.uleb128 0x9
+ 313 0125 B0000000 		.4byte	0xb0
+ 314 0129 1B       		.byte	0x1b
+ 315 012a 00       		.byte	0
+ 316 012b 0A       		.uleb128 0xa
+ 317 012c 6B000000 		.4byte	0x6b
+ 318 0130 07       		.uleb128 0x7
+ 319 0131 01010000 		.4byte	.LASF20
+ 320 0135 04       		.byte	0x4
+ 321 0136 31       		.byte	0x31
+ 322 0137 41010000 		.4byte	0x141
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 9
+
+
+ 323 013b 05       		.uleb128 0x5
+ 324 013c 03       		.byte	0x3
+ 325 013d 00000000 		.4byte	dummyRxBuffer
+ 326 0141 0A       		.uleb128 0xa
+ 327 0142 1B010000 		.4byte	0x11b
+ 328 0146 08       		.uleb128 0x8
+ 329 0147 2B010000 		.4byte	0x12b
+ 330 014b 56010000 		.4byte	0x156
+ 331 014f 09       		.uleb128 0x9
+ 332 0150 B0000000 		.4byte	0xb0
+ 333 0154 02       		.byte	0x2
+ 334 0155 00       		.byte	0
+ 335 0156 07       		.uleb128 0x7
+ 336 0157 8D000000 		.4byte	.LASF21
+ 337 015b 04       		.byte	0x4
+ 338 015c 33       		.byte	0x33
+ 339 015d 67010000 		.4byte	0x167
+ 340 0161 05       		.uleb128 0x5
+ 341 0162 03       		.byte	0x3
+ 342 0163 00000000 		.4byte	dummyTxBuffer
+ 343 0167 0A       		.uleb128 0xa
+ 344 0168 46010000 		.4byte	0x146
+ 345 016c 0B       		.uleb128 0xb
+ 346 016d 636800   		.ascii	"ch\000"
+ 347 0170 01       		.byte	0x1
+ 348 0171 1F       		.byte	0x1f
+ 349 0172 77000000 		.4byte	0x77
+ 350 0176 05       		.uleb128 0x5
+ 351 0177 03       		.byte	0x3
+ 352 0178 00000000 		.4byte	ch
+ 353 017c 07       		.uleb128 0x7
+ 354 017d CD000000 		.4byte	.LASF22
+ 355 0181 01       		.byte	0x1
+ 356 0182 20       		.byte	0x20
+ 357 0183 6B000000 		.4byte	0x6b
+ 358 0187 05       		.uleb128 0x5
+ 359 0188 03       		.byte	0x3
+ 360 0189 00000000 		.4byte	display_status
+ 361 018d 00       		.byte	0
+ 362              		.section	.debug_abbrev,"",%progbits
+ 363              	.Ldebug_abbrev0:
+ 364 0000 01       		.uleb128 0x1
+ 365 0001 11       		.uleb128 0x11
+ 366 0002 01       		.byte	0x1
+ 367 0003 25       		.uleb128 0x25
+ 368 0004 0E       		.uleb128 0xe
+ 369 0005 13       		.uleb128 0x13
+ 370 0006 0B       		.uleb128 0xb
+ 371 0007 03       		.uleb128 0x3
+ 372 0008 0E       		.uleb128 0xe
+ 373 0009 1B       		.uleb128 0x1b
+ 374 000a 0E       		.uleb128 0xe
+ 375 000b 55       		.uleb128 0x55
+ 376 000c 17       		.uleb128 0x17
+ 377 000d 11       		.uleb128 0x11
+ 378 000e 01       		.uleb128 0x1
+ 379 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 10
+
+
+ 380 0010 17       		.uleb128 0x17
+ 381 0011 00       		.byte	0
+ 382 0012 00       		.byte	0
+ 383 0013 02       		.uleb128 0x2
+ 384 0014 24       		.uleb128 0x24
+ 385 0015 00       		.byte	0
+ 386 0016 0B       		.uleb128 0xb
+ 387 0017 0B       		.uleb128 0xb
+ 388 0018 3E       		.uleb128 0x3e
+ 389 0019 0B       		.uleb128 0xb
+ 390 001a 03       		.uleb128 0x3
+ 391 001b 0E       		.uleb128 0xe
+ 392 001c 00       		.byte	0
+ 393 001d 00       		.byte	0
+ 394 001e 03       		.uleb128 0x3
+ 395 001f 24       		.uleb128 0x24
+ 396 0020 00       		.byte	0
+ 397 0021 0B       		.uleb128 0xb
+ 398 0022 0B       		.uleb128 0xb
+ 399 0023 3E       		.uleb128 0x3e
+ 400 0024 0B       		.uleb128 0xb
+ 401 0025 03       		.uleb128 0x3
+ 402 0026 08       		.uleb128 0x8
+ 403 0027 00       		.byte	0
+ 404 0028 00       		.byte	0
+ 405 0029 04       		.uleb128 0x4
+ 406 002a 16       		.uleb128 0x16
+ 407 002b 00       		.byte	0
+ 408 002c 03       		.uleb128 0x3
+ 409 002d 0E       		.uleb128 0xe
+ 410 002e 3A       		.uleb128 0x3a
+ 411 002f 0B       		.uleb128 0xb
+ 412 0030 3B       		.uleb128 0x3b
+ 413 0031 05       		.uleb128 0x5
+ 414 0032 49       		.uleb128 0x49
+ 415 0033 13       		.uleb128 0x13
+ 416 0034 00       		.byte	0
+ 417 0035 00       		.byte	0
+ 418 0036 05       		.uleb128 0x5
+ 419 0037 35       		.uleb128 0x35
+ 420 0038 00       		.byte	0
+ 421 0039 49       		.uleb128 0x49
+ 422 003a 13       		.uleb128 0x13
+ 423 003b 00       		.byte	0
+ 424 003c 00       		.byte	0
+ 425 003d 06       		.uleb128 0x6
+ 426 003e 2E       		.uleb128 0x2e
+ 427 003f 00       		.byte	0
+ 428 0040 3F       		.uleb128 0x3f
+ 429 0041 19       		.uleb128 0x19
+ 430 0042 03       		.uleb128 0x3
+ 431 0043 0E       		.uleb128 0xe
+ 432 0044 3A       		.uleb128 0x3a
+ 433 0045 0B       		.uleb128 0xb
+ 434 0046 3B       		.uleb128 0x3b
+ 435 0047 0B       		.uleb128 0xb
+ 436 0048 11       		.uleb128 0x11
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 11
+
+
+ 437 0049 01       		.uleb128 0x1
+ 438 004a 12       		.uleb128 0x12
+ 439 004b 06       		.uleb128 0x6
+ 440 004c 40       		.uleb128 0x40
+ 441 004d 18       		.uleb128 0x18
+ 442 004e 9642     		.uleb128 0x2116
+ 443 0050 19       		.uleb128 0x19
+ 444 0051 00       		.byte	0
+ 445 0052 00       		.byte	0
+ 446 0053 07       		.uleb128 0x7
+ 447 0054 34       		.uleb128 0x34
+ 448 0055 00       		.byte	0
+ 449 0056 03       		.uleb128 0x3
+ 450 0057 0E       		.uleb128 0xe
+ 451 0058 3A       		.uleb128 0x3a
+ 452 0059 0B       		.uleb128 0xb
+ 453 005a 3B       		.uleb128 0x3b
+ 454 005b 0B       		.uleb128 0xb
+ 455 005c 49       		.uleb128 0x49
+ 456 005d 13       		.uleb128 0x13
+ 457 005e 3F       		.uleb128 0x3f
+ 458 005f 19       		.uleb128 0x19
+ 459 0060 02       		.uleb128 0x2
+ 460 0061 18       		.uleb128 0x18
+ 461 0062 00       		.byte	0
+ 462 0063 00       		.byte	0
+ 463 0064 08       		.uleb128 0x8
+ 464 0065 01       		.uleb128 0x1
+ 465 0066 01       		.byte	0x1
+ 466 0067 49       		.uleb128 0x49
+ 467 0068 13       		.uleb128 0x13
+ 468 0069 01       		.uleb128 0x1
+ 469 006a 13       		.uleb128 0x13
+ 470 006b 00       		.byte	0
+ 471 006c 00       		.byte	0
+ 472 006d 09       		.uleb128 0x9
+ 473 006e 21       		.uleb128 0x21
+ 474 006f 00       		.byte	0
+ 475 0070 49       		.uleb128 0x49
+ 476 0071 13       		.uleb128 0x13
+ 477 0072 2F       		.uleb128 0x2f
+ 478 0073 0B       		.uleb128 0xb
+ 479 0074 00       		.byte	0
+ 480 0075 00       		.byte	0
+ 481 0076 0A       		.uleb128 0xa
+ 482 0077 26       		.uleb128 0x26
+ 483 0078 00       		.byte	0
+ 484 0079 49       		.uleb128 0x49
+ 485 007a 13       		.uleb128 0x13
+ 486 007b 00       		.byte	0
+ 487 007c 00       		.byte	0
+ 488 007d 0B       		.uleb128 0xb
+ 489 007e 34       		.uleb128 0x34
+ 490 007f 00       		.byte	0
+ 491 0080 03       		.uleb128 0x3
+ 492 0081 08       		.uleb128 0x8
+ 493 0082 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 12
+
+
+ 494 0083 0B       		.uleb128 0xb
+ 495 0084 3B       		.uleb128 0x3b
+ 496 0085 0B       		.uleb128 0xb
+ 497 0086 49       		.uleb128 0x49
+ 498 0087 13       		.uleb128 0x13
+ 499 0088 3F       		.uleb128 0x3f
+ 500 0089 19       		.uleb128 0x19
+ 501 008a 02       		.uleb128 0x2
+ 502 008b 18       		.uleb128 0x18
+ 503 008c 00       		.byte	0
+ 504 008d 00       		.byte	0
+ 505 008e 00       		.byte	0
+ 506              		.section	.debug_aranges,"",%progbits
+ 507 0000 1C000000 		.4byte	0x1c
+ 508 0004 0200     		.2byte	0x2
+ 509 0006 00000000 		.4byte	.Ldebug_info0
+ 510 000a 04       		.byte	0x4
+ 511 000b 00       		.byte	0
+ 512 000c 0000     		.2byte	0
+ 513 000e 0000     		.2byte	0
+ 514 0010 00000000 		.4byte	.LFB32
+ 515 0014 D0000000 		.4byte	.LFE32-.LFB32
+ 516 0018 00000000 		.4byte	0
+ 517 001c 00000000 		.4byte	0
+ 518              		.section	.debug_ranges,"",%progbits
+ 519              	.Ldebug_ranges0:
+ 520 0000 00000000 		.4byte	.LFB32
+ 521 0004 D0000000 		.4byte	.LFE32
+ 522 0008 00000000 		.4byte	0
+ 523 000c 00000000 		.4byte	0
+ 524              		.section	.debug_line,"",%progbits
+ 525              	.Ldebug_line0:
+ 526 0000 90000000 		.section	.debug_str,"MS",%progbits,1
+ 526      02005E00 
+ 526      00000201 
+ 526      FB0E0D00 
+ 526      01010101 
+ 527              	.LASF6:
+ 528 0000 6C6F6E67 		.ascii	"long long int\000"
+ 528      206C6F6E 
+ 528      6720696E 
+ 528      7400
+ 529              	.LASF10:
+ 530 000e 75696E74 		.ascii	"uint32\000"
+ 530      333200
+ 531              	.LASF8:
+ 532 0015 756E7369 		.ascii	"unsigned int\000"
+ 532      676E6564 
+ 532      20696E74 
+ 532      00
+ 533              	.LASF24:
+ 534 0022 6D61696E 		.ascii	"main.c\000"
+ 534      2E6300
+ 535              	.LASF26:
+ 536 0029 6D61696E 		.ascii	"main\000"
+ 536      00
+ 537              	.LASF25:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 13
+
+
+ 538 002e 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_display.cyds"
+ 538      73657273 
+ 538      5C416C61 
+ 538      5C446573 
+ 538      6B746F70 
+ 539 005c 6E00     		.ascii	"n\000"
+ 540              	.LASF9:
+ 541 005e 75696E74 		.ascii	"uint8\000"
+ 541      3800
+ 542              	.LASF5:
+ 543 0064 6C6F6E67 		.ascii	"long unsigned int\000"
+ 543      20756E73 
+ 543      69676E65 
+ 543      6420696E 
+ 543      7400
+ 544              	.LASF7:
+ 545 0076 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 545      206C6F6E 
+ 545      6720756E 
+ 545      7369676E 
+ 545      65642069 
+ 546              	.LASF21:
+ 547 008d 64756D6D 		.ascii	"dummyTxBuffer\000"
+ 547      79547842 
+ 547      75666665 
+ 547      7200
+ 548              	.LASF11:
+ 549 009b 666C6F61 		.ascii	"float\000"
+ 549      7400
+ 550              	.LASF1:
+ 551 00a1 756E7369 		.ascii	"unsigned char\000"
+ 551      676E6564 
+ 551      20636861 
+ 551      7200
+ 552              	.LASF13:
+ 553 00af 63686172 		.ascii	"char\000"
+ 553      00
+ 554              	.LASF4:
+ 555 00b4 6C6F6E67 		.ascii	"long int\000"
+ 555      20696E74 
+ 555      00
+ 556              	.LASF18:
+ 557 00bd 52784275 		.ascii	"RxBuffer\000"
+ 557      66666572 
+ 557      00
+ 558              	.LASF12:
+ 559 00c6 646F7562 		.ascii	"double\000"
+ 559      6C6500
+ 560              	.LASF22:
+ 561 00cd 64697370 		.ascii	"display_status\000"
+ 561      6C61795F 
+ 561      73746174 
+ 561      757300
+ 562              	.LASF14:
+ 563 00dc 72656733 		.ascii	"reg32\000"
+ 563      3200
+ 564              	.LASF3:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccpJB1td.s 			page 14
+
+
+ 565 00e2 73686F72 		.ascii	"short unsigned int\000"
+ 565      7420756E 
+ 565      7369676E 
+ 565      65642069 
+ 565      6E7400
+ 566              	.LASF0:
+ 567 00f5 7369676E 		.ascii	"signed char\000"
+ 567      65642063 
+ 567      68617200 
+ 568              	.LASF20:
+ 569 0101 64756D6D 		.ascii	"dummyRxBuffer\000"
+ 569      79527842 
+ 569      75666665 
+ 569      7200
+ 570              	.LASF15:
+ 571 010f 6C6F6E67 		.ascii	"long double\000"
+ 571      20646F75 
+ 571      626C6500 
+ 572              	.LASF2:
+ 573 011b 73686F72 		.ascii	"short int\000"
+ 573      7420696E 
+ 573      7400
+ 574              	.LASF23:
+ 575 0125 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 575      43313120 
+ 575      352E342E 
+ 575      31203230 
+ 575      31363036 
+ 576 0158 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 576      20726576 
+ 576      6973696F 
+ 576      6E203233 
+ 576      37373135 
+ 577 018b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 577      66756E63 
+ 577      74696F6E 
+ 577      2D736563 
+ 577      74696F6E 
+ 578              	.LASF19:
+ 579 01b3 54784275 		.ascii	"TxBuffer\000"
+ 579      66666572 
+ 579      00
+ 580              	.LASF17:
+ 581 01bc 666C6167 		.ascii	"flag\000"
+ 581      00
+ 582              	.LASF16:
+ 583 01c1 73697A65 		.ascii	"sizetype\000"
+ 583      74797065 
+ 583      00
+ 584              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
