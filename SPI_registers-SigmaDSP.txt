@@ -1,0 +1,111 @@
+Register addresses:
+
+WRITE:
+
+LED = 0x0538
+ -> 0x0000 = OFF
+ -> 0x0001 = ON
+
+Control = 0x0535
+ -> 0x0000 = MUTE
+ -> 0x0001 = RPi
+ -> 0x0000 = DAB
+ -> 0x0001 = AuxIN
+ -> 0x0000 = BlueTooth Rx
+
+
+READ:
+
+CODE = 0x001B
+ -> 0xBE01BE02
+
+LEVEL = 0x0514
+ -> 0x0000aabb
+ - aa - 0x00 - 0x15 - left channel 
+ - bb - 0x00 - 0x15 - right channel
+0x15 = +6dB
+0x14 = +3dB
+0x13 = 0dB
+0x12 = -3dB
+0x11 = -6dB
+0x10 = -9dB
+0x0F = -12dB
+0x0E = -15dB
+0x0D = -18dB
+0x0C = -21dB
+0x0B = -24dB
+0x0A = -27dB
+0x09 = -30dB
+0x08 = -33dB
+0x07 = -36dB
+0x06 = -39dB
+0x05 = -42dB
+0x04 = -45dB
+0x03 = -48dB
+0x02 = -51dB
+0x01 = -54dB
+0x00 = -57dB
+0x00 = -57dB
+
+0x10 = +6dB
+0x0F = +3dB
+0x0E = 0dB
+:
+0x02 = -36dB
+0x01 = -39dB
+0x00 = -42dB
+0x00 = -45dB
+
+
+Spectrum analyzer
+Right = 0x0526
+RIGHT
+b31-b28 - NOT_USED
+b27-b24 - 31.5Hz
+b23-b20 - 63Hz
+b19-b16 - 125Hz
+b15-b12 - 250Hz
+b11-b8 - 500Hz
+b7-b4 - 1000Hz
+b3-b0 - 2000Hz
+
+Left = 0x0527
+LEFT
+b31-b28 - NOT_USED
+b27-b24 - 31.5Hz
+b23-b20 - 63Hz
+b19-b16 - 125Hz
+b15-b12 - 250Hz
+b11-b8 - 500Hz
+b7-b4 - 1000Hz
+b3-b0 - 2000Hz
+
+Left&Right = 0x0528
+LEFT
+b31-b28 - NOT_USED
+b27-b24 - 4000Hz
+b23-b20 - 8000Hz
+b19-b16 - 16000Hz
+RIGHT
+b15-b12 - NOT_USED
+b11-b8 - 4000Hz
+b7-b4 - 8000Hz
+b3-b0 - 16000Hz
+
+0x00 = -36dB
+0x01 = -33sB
+0x02 = -30dB
+0x03 = -27dB
+0x04 = -24dB
+0x05 = -21dB
+0x06 = -18dB
+0x07 = -15dB
+0x08 = -12dB
+0x09 = -9dB
+0x0A = -6dB
+0x0B = -3dB
+0x0C = 0dB
+0x0D = 3dB
+0x0E = 6dB
+
+
