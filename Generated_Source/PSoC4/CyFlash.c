@@ -1,6 +1,6 @@
 /***************************************************************************//**
 * \file CyFlash.c
-* \version 5.90
+* \version 6.0
 *
 * \brief Provides an API for the FLASH.
 *

@@ -214,7 +214,7 @@
 * data rate configuration, can be defined in project if required.
 */
 #ifndef SPIS_SPI_BYTE_TO_BYTE
-    #define SPIS_SPI_BYTE_TO_BYTE   (18u)
+    #define SPIS_SPI_BYTE_TO_BYTE   (16u)
 #endif
 
 /* Byte to byte time interval: calculated basing on current component

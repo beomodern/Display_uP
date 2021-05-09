@@ -28,8 +28,8 @@
 
 #define SPIS_SPI_MODE                   (0u)
 #define SPIS_SPI_SUB_MODE               (0u)
-#define SPIS_SPI_CLOCK_MODE             (3u)
-#define SPIS_SPI_OVS_FACTOR             (8u)
+#define SPIS_SPI_CLOCK_MODE             (0u)
+#define SPIS_SPI_OVS_FACTOR             (16u)
 #define SPIS_SPI_MEDIAN_FILTER_ENABLE   (1u)
 #define SPIS_SPI_LATE_MISO_SAMPLE_ENABLE (0u)
 #define SPIS_SPI_RX_DATA_BITS_NUM       (8u)
@@ -38,16 +38,16 @@
 #define SPIS_SPI_BITS_ORDER             (1u)
 #define SPIS_SPI_TRANSFER_SEPARATION    (1u)
 #define SPIS_SPI_NUMBER_OF_SS_LINES     (1u)
-#define SPIS_SPI_RX_BUFFER_SIZE         (40u)
-#define SPIS_SPI_TX_BUFFER_SIZE         (40u)
+#define SPIS_SPI_RX_BUFFER_SIZE         (28u)
+#define SPIS_SPI_TX_BUFFER_SIZE         (28u)
 
 #define SPIS_SPI_INTERRUPT_MODE         (1u)
 
 #define SPIS_SPI_INTR_RX_MASK           (0x4u)
 #define SPIS_SPI_INTR_TX_MASK           (0x0u)
 
-#define SPIS_SPI_RX_TRIGGER_LEVEL       (0u)
-#define SPIS_SPI_TX_TRIGGER_LEVEL       (1u)
+#define SPIS_SPI_RX_TRIGGER_LEVEL       (7u)
+#define SPIS_SPI_TX_TRIGGER_LEVEL       (7u)
 
 #define SPIS_SPI_BYTE_MODE_ENABLE       (0u)
 #define SPIS_SPI_FREE_RUN_SCLK_ENABLE   (0u)
