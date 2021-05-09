@@ -1,1 +1,0 @@
-'C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\main.c' -o .o -T SOURCE_C__ARM_GCC_GENERIC -I 'C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn' -I 'C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\Generated_Source\PSoC4' -f 'C:\Users\Ala\Desktop\Cypress\BeoM_display.cydsn\CortexM0\ARM_GCC_541\Debug\.deps\SOURCE_C__ARM_GCC_GENERIC.d'

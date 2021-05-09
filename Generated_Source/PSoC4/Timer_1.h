@@ -55,7 +55,7 @@ extern uint8  Timer_1_initVar;
 /* Quad Mode */
 /* Parameters */
 #define Timer_1_QUAD_ENCODING_MODES            (0lu)
-#define Timer_1_QUAD_AUTO_START                (0lu)
+#define Timer_1_QUAD_AUTO_START                (1lu)
 
 /* Signal modes */
 #define Timer_1_QUAD_INDEX_SIGNAL_MODE         (0lu)
@@ -72,23 +72,23 @@ extern uint8  Timer_1_initVar;
 
 /* Timer/Counter Mode */
 /* Parameters */
-#define Timer_1_TC_RUN_MODE                    (1lu)
+#define Timer_1_TC_RUN_MODE                    (0lu)
 #define Timer_1_TC_COUNTER_MODE                (0lu)
 #define Timer_1_TC_COMP_CAP_MODE               (2lu)
 #define Timer_1_TC_PRESCALER                   (0lu)
 
 /* Signal modes */
-#define Timer_1_TC_RELOAD_SIGNAL_MODE          (1lu)
+#define Timer_1_TC_RELOAD_SIGNAL_MODE          (0lu)
 #define Timer_1_TC_COUNT_SIGNAL_MODE           (3lu)
-#define Timer_1_TC_START_SIGNAL_MODE           (1lu)
+#define Timer_1_TC_START_SIGNAL_MODE           (0lu)
 #define Timer_1_TC_STOP_SIGNAL_MODE            (0lu)
 #define Timer_1_TC_CAPTURE_SIGNAL_MODE         (0lu)
 
 /* Signal present */
-#define Timer_1_TC_RELOAD_SIGNAL_PRESENT       (1lu)
+#define Timer_1_TC_RELOAD_SIGNAL_PRESENT       (0lu)
 #define Timer_1_TC_COUNT_SIGNAL_PRESENT        (0lu)
-#define Timer_1_TC_START_SIGNAL_PRESENT        (1lu)
-#define Timer_1_TC_STOP_SIGNAL_PRESENT         (1lu)
+#define Timer_1_TC_START_SIGNAL_PRESENT        (0lu)
+#define Timer_1_TC_STOP_SIGNAL_PRESENT         (0lu)
 #define Timer_1_TC_CAPTURE_SIGNAL_PRESENT      (0lu)
 
 /* Interrupt Mask */
@@ -129,8 +129,8 @@ extern uint8  Timer_1_initVar;
 ***************************************/
 
 /* Timer/Counter Mode */
-#define Timer_1_TC_PERIOD_VALUE                (200lu)
-#define Timer_1_TC_COMPARE_VALUE               (20000lu)
+#define Timer_1_TC_PERIOD_VALUE                (65535lu)
+#define Timer_1_TC_COMPARE_VALUE               (65535lu)
 #define Timer_1_TC_COMPARE_BUF_VALUE           (65535lu)
 #define Timer_1_TC_COMPARE_SWAP                (0lu)
 

@@ -1,6 +1,6 @@
 /***************************************************************************//**
 * \file CyFlash.h
-* \version 5.90
+* \version 6.0
 *
 * \brief Provides the function definitions for the FLASH.
 *
