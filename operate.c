@@ -438,7 +438,7 @@ uint8 Set_I2C_LED_Driver(uint16 configure)
 *  B_MAX (4095u)    // 100%
 *
 *  Brightness hysteresis
-*  B_HYSTERESIS (61u)  // 1,5%
+*  B_HYSTERESIS (120u)  // 3%
 *
 * Return:
 *  None
