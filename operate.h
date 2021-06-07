@@ -55,7 +55,7 @@ uint8 Disp_Brightness;
 #define B_MAX (4095u)    // 100%
 
 // Brightness hysteresis
-#define B_HYSTERESIS (61u)  // 1,5%
+#define B_HYSTERESIS (120u)  // 3%
     
 /***************************************
 *            Constants
